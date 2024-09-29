@@ -198,7 +198,7 @@ classDiagram
 **UI Specialist**: Vinay Thamara
 
 ## Milestones
-[Milestone 1](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/1)
-[Milestone 2](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/2)
+[Milestone 1](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/1) <br />
+[Milestone 2](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/2) <br />
 [Milestone 3](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/3)
 
