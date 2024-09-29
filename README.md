@@ -199,4 +199,6 @@ classDiagram
 
 ## Milestones
 [Milestone 1](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/1)
+[Milestone 2](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/2)
+[Milestone 3](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/3)
 
