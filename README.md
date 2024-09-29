@@ -34,48 +34,161 @@ FreelanceIT is a project management software designed specifically for freelance
 
 ## Class Diagram
 ```mermaid
-erDiagram
-    User {
-        int id PK
-        string name
-        string password
+classDiagram
+    class User {
+        +int id
+        +string name
+        +string password
+        +createProject()
+        +getProjects()
+        +updateProfile()
     }
 
-    Project {
-        int id PK
-        int userId FK
-        string name
-        enum status
-        date startDate
-        date deadline
-        date endDate "optional"
+    class Project {
+        +int id
+        +int userId
+        +string name
+        +enum status
+        +date startDate
+        +date deadline
+        +date endDate
+        +addTask()
+        +updateStatus()
+        +getProgress()
+        +extendDeadline()
     }
 
-    Clock {
-        int id PK
-        int projectId FK
-        datetime timestamp
-        boolean isClockedIn
+    class Clock {
+        +int id
+        +int projectId
+        +datetime timestamp
+        +boolean isClockedIn
+        +clockIn()
+        +clockOut()
+        +getDuration()
     }
 
-    Task {
-        int id PK
-        int projectId FK
-        int parentId FK "optional"
-        string name
-        date dueDate "optional"
-        datetime completedAt "optional"
+    class Task {
+        +int id
+        +int projectId
+        +int parentId
+        +string name
+        +date dueDate
+        +datetime completedAt
+        +addSubtask()
+        +complete()
+        +updateDueDate()
     }
 
-    User ||--o{ Project : "creates"
-    Project ||--o{ Clock : "has"
-    Project ||--o{ Task : "contains"
-    Task ||--o{ Task : "has subtasks"
+    User "1" -- "0..*" Project : creates
+    Project "1" -- "0..*" Clock : has
+    Project "1" -- "0..*" Task : contains
+    Task "1" -- "0..*" Task : has subtasks
 ```
 
 ## Class Diagram Description
+**User**: Manages user accoutnts and Project Ownership
+
+**Project**: Represents a project and its lifecycle
+
+**Clock**: Tracks time spent on projects
+
+**Task**: Manages individual tasks within projects
 
 ## JSON Schema
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["NOT_STARTED", "IN_PROGRESS", "COMPLETED", "ON_HOLD"]
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "completedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "subtasks": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/properties/projects/items/properties/tasks/items"
+                  }
+                }
+              },
+              "required": ["id", "name"]
+            }
+          },
+          "clockEntries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "isClockedIn": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["id", "timestamp", "isClockedIn"]
+            }
+          }
+        },
+        "required": ["id", "name", "status", "startDate", "deadline"]
+      }
+    }
+  },
+  "required": ["id", "name", "projects"]
+}
+```
 
 ## Team Members and Roles
 
