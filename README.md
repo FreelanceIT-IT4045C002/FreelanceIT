@@ -41,7 +41,6 @@ classDiagram
         +string password
         +createProject()
         +getProjects()
-        +updateProfile()
     }
 
     class Project {
@@ -54,8 +53,6 @@ classDiagram
         +date endDate
         +addTask()
         +updateStatus()
-        +getProgress()
-        +extendDeadline()
     }
 
     class Clock {
@@ -77,7 +74,6 @@ classDiagram
         +datetime completedAt
         +addSubtask()
         +complete()
-        +updateDueDate()
     }
 
     User "1" -- "0..*" Project : creates
