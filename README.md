@@ -33,6 +33,45 @@ FreelanceIT is a project management software designed specifically for freelance
 **Then**: They can see their tasks sorted by priority
 
 ## Class Diagram
+```mermaid
+erDiagram
+    User {
+        int id PK
+        string name
+        string password
+    }
+
+    Project {
+        int id PK
+        int userId FK
+        string name
+        enum status
+        date startDate
+        date deadline
+        date endDate "optional"
+    }
+
+    Clock {
+        int id PK
+        int projectId FK
+        datetime timestamp
+        boolean isClockedIn
+    }
+
+    Task {
+        int id PK
+        int projectId FK
+        int parentId FK "optional"
+        string name
+        date dueDate "optional"
+        datetime completedAt "optional"
+    }
+
+    User ||--o{ Project : "creates"
+    Project ||--o{ Clock : "has"
+    Project ||--o{ Task : "contains"
+    Task ||--o{ Task : "has subtasks"
+```
 
 ## Class Diagram Description
 
