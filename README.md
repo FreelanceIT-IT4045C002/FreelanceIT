@@ -5,6 +5,7 @@
 FreelanceIT is a project management software designed specifically for freelancers to efficiently manage their projects and track task durations. It streamlines workflow and provides insights into productivity, helping freelancers stay organized and on top of deadlines. ​
 
 ## Storyboard
+![Story Board](https://github.com/user-attachments/assets/d721d838-53cd-4a4e-855b-760c5fe63300)
 
 ## Requirements
 
