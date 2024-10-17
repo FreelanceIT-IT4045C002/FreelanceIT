@@ -4,7 +4,18 @@
 
 FreelanceIT is a project management software designed specifically for freelancers to efficiently manage their projects and track task durations. It streamlines workflow and provides insights into productivity, helping freelancers stay organized and on top of deadlines. ​
 
-## Storyboard
+## Storyboard - [Link to Figma](https://www.figma.com/proto/6UlcJ96ng53zBShCTZDhuR/Untitled?node-id=1-2&node-type=canvas&t=IHGQ6s4PftIiCHXR-0&scaling=contain&content-scaling=fixed&page-id=0%3A1)
+### Login
+![Login](https://github.com/user-attachments/assets/6ace5c30-ac63-4052-a27f-7865c3ff25e7)
+### Homepage
+![Homepage](https://github.com/user-attachments/assets/c7ec50ce-3b2b-4947-9df6-caf807bcbae2)
+### Add Project Page
+![Add Project Page](https://github.com/user-attachments/assets/56c1bece-d48a-4678-b13f-092d517881a3)
+### Task Page
+![Task Page](https://github.com/user-attachments/assets/6c51d5a8-96ce-4b99-9c81-7394343aaeba)
+### Tasks
+![Tasks](https://github.com/user-attachments/assets/9898ee6c-7237-4092-9d14-09be78ea7744)
+
 
 ## Requirements
 
@@ -197,4 +208,7 @@ classDiagram
 **UI Specialist**: Vinay Thamara
 
 ## Milestones
+[Milestone 1](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/1) <br />
+[Milestone 2](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/2) <br />
+[Milestone 3](https://github.com/FreelanceIT-IT4045C002/FreelanceIT/milestone/3)
 
