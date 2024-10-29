@@ -1,1 +1,12 @@
 services:
+  db:
+    image: mysql
+    restart: always
+    container_name: freelanceit_db
+    environment:
+        MYSQL_ROOT_PASSWORD: rootpassword
+        MYSQL_DATABASE: freelanceit
+        MYSQL_USER: user
+        MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
