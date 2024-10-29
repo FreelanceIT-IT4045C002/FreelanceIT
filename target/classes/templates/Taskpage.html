@@ -21,13 +21,20 @@
     .badge {
       background-color: #ffc107;
     }
-    h2 {
+    h2, h3 {
       color: #343a40;
       text-align: left;
     }
     .project-title {
       margin-top: 20px;
       color: #343a40;
+    }
+    .main-content {
+      padding: 20px;
+    }
+    .side-menu img {
+      width: 40px;
+      border-radius: 50%;
     }
   </style>
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
@@ -96,33 +103,33 @@
 </header>
 
 
-    <main class="main-content">
-        <section class="project-section">
-          <h2>Project Overview</h2>
-          <div class="tasks">
-            <h3>Your Tasks</h3>
-            <div class="task-cards" id="taskCards">
-             <!-- Dynamically generated task cards will go here -->
-            </div>
-           <!-- Add New Task Card -->
-            <div class="add-task-card">
-              <a href="/add/todo" class="add-task-link">
-                <p>+</p>
-                <span>Add New Task</span>
-              </a>
-            </div>
-          </div>
-        </section>
-  
-        <section class="logs-section">
-          <h3>Logs</h3>
-          <p>January - March 2024</p>
-        </section>
-      </main>
 
-    <footer>
-        <button class="clock-in-button">Clock In</button>
-      </footer>
+<main class="main-content container">
+  <section class="project-section">
+    <h2>Project Overview</h2>
+    <div class="tasks mb-4">
+      <h3>Your Tasks</h3>
+      <div class="row" id="taskCards">
+        <!-- Dynamically generated task cards will go here -->
+      </div>
+      <div class="add-task-card card text-center mt-3">
+        <a href="/add/todo" class="text-decoration-none">
+          <p class="display-4 text-primary">+</p>
+          <span>Add New Task</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="logs-section">
+    <h3>Logs</h3>
+    <p>January - March 2024</p>
+  </section>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light text-center">
+  <button class="btn btn-primary clock-in-button">Clock In</button>
+</footer>
 
   <script>
   // Function to load tasks from localStorage and display them
