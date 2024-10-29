@@ -23,4 +23,19 @@ public class HomeController {
         return "project";
     }
 
+    @GetMapping("/add/task")
+    public String addTask() {
+        return "Taskpage";
+    }
+
+    @GetMapping("/add/todo")
+    public String addTodo() {
+        return "AddtodoList";
+    }
+
+    @GetMapping("/inprogress")
+    public String inProgress() {
+        return "inprogress";
+    }
+
 }
