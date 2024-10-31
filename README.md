@@ -87,10 +87,23 @@ classDiagram
         +complete()
     }
 
+    class ActivityLog {
+        +int id
+        +string entityType
+        +int entityId
+        +enum actionType
+        +datetime timestamp
+        +string details
+        +logAction()
+    }
+
     User "1" -- "0..*" Project : creates
     Project "1" -- "0..*" Clock : has
     Project "1" -- "0..*" Task : contains
     Task "1" -- "0..*" Task : has subtasks
+    Project "1" -- "0..*" ActivityLog : logs
+    Task "1" -- "0..*" ActivityLog : logs
+    Clock "1" -- "0..*" ActivityLog : logs
 ```
 
 ## Class Diagram Description
