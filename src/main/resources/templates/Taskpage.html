@@ -18,17 +18,12 @@
       margin: 10px;
       cursor: pointer;
     }
-    .badge {
-      background-color: #ffc107;
-    }
+
     h2, h3 {
       color: #343a40;
       text-align: left;
     }
-    .project-title {
-      margin-top: 20px;
-      color: #343a40;
-    }
+
     .main-content {
       padding: 20px;
     }
@@ -47,7 +42,7 @@
 <body>
 <header>
   <nav>
-    <a href="javascript:;" class="logo">
+    <a href="javascript:" class="logo">
       <img th:src="@{/images/logo.svg}" alt="">
     </a>
 
@@ -77,17 +72,17 @@
     <div class="side-menu">
       <ul>
         <li>
-          <a href="javascript:;">
+          <a href="javascript:">
             <i class="fa fa-bell"></i>
           </a>
         </li>
         <li>
-          <a href="javascript:;">
+          <a href="javascript:">
             <i class="fa fa-comment"></i>
           </a>
         </li>
         <li>
-          <a href="javascript:;">
+          <a href="javascript:">
             <img th:src="@{/images/profile-img.jpg}" alt="">
             <span>K.Anderson <i class="fa fa-chevron-down"></i></span>
           </a>
@@ -135,30 +130,36 @@
   // Function to load tasks from localStorage and display them
   function loadTasks() {
     const taskCardsContainer = document.getElementById('taskCards');
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Replace with data from your backend if needed.
 
     taskCardsContainer.innerHTML = ''; // Clear existing tasks
 
-    tasks.forEach((task, index) => {
+    tasks.forEach((task) => {
       const taskCard = document.createElement('div');
       taskCard.className = 'task-card';
       taskCard.innerHTML = `
-          <p>${task.title}</p>
-          <span>${task.description}</span>
-          <span>Assigned to: ${task.assigned}</span>
-          <button onclick="deleteTask(${index})">Delete</button>
-        `;
+      <p>${task.title}</p>
+      <span>${task.description}</span>
+      <span>Assigned to: ${task.assigned}</span>
+      <button onclick="deleteTask(${task.id})">Delete</button> <!-- Call deleteTask here -->
+    `;
       taskCardsContainer.appendChild(taskCard);
     });
   }
 
   // Function to delete a task
-  function deleteTask(index) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.splice(index, 1); // Remove the task at the specified index
-    localStorage.setItem('tasks', JSON.stringify(tasks)); // Update localStorage
-    loadTasks(); // Reload tasks to refresh the displayed list
+  function deleteTask(taskId) {
+    fetch(`/delete/task?id=${taskId}`, {
+      method: 'DELETE',
+    })
+            .then(response => response.text())
+            .then(data => {
+              alert(data); // Show response message
+              loadTasks(); // Reload tasks to refresh the displayed list
+            })
+            .catch(error => console.error('Error deleting task:', error));
   }
+
 
   // Call loadTasks on page load
   window.onload = loadTasks;
@@ -172,5 +173,3 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
