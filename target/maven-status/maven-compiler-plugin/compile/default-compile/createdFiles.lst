@@ -1,8 +1,0 @@
-com/freelanceit/freelanceit/FreelanceItApplication.class
-dao/ProjectDAO.class
-service/ProjectService.class
-com/freelanceit/freelanceit/HomeController.class
-dao/IProjectDAO.class
-dao/ProjectRepository.class
-dto/Project.class
-service/IProjectService.class
