@@ -1,5 +1,17 @@
 # FreelanceIT
 
+## How to Start the Project
+1. Install [Docker Desktop](https://www.docker.com)
+2. In the project directory run
+``` 
+docker compose up 
+```
+  - This will set up the docker container, and run it with the database so that the program runs
+  - Currently there aren't any databases actually used, but we used it for future setups.
+3. If using IntelliJ Idea you should be able to run the project using the default configuration and press play on the top right corner
+4. Navigate to [localhost:8080](http://localhost:8080/)
+5. If you have any troubles or questions message any one of us on teams.
+
 ## Introduction
 
 FreelanceIT is a project management software designed specifically for freelancers to efficiently manage their projects and track task durations. It streamlines workflow and provides insights into productivity, helping freelancers stay organized and on top of deadlines. ​
