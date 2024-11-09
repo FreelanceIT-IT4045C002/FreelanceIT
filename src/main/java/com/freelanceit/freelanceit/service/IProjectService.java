@@ -1,6 +1,6 @@
-package service;
+package com.freelanceit.freelanceit.service;
 
-import dto.Project;
+import com.freelanceit.freelanceit.dto.Project;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package dto;
+package com.freelanceit.freelanceit.dto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,6 +1,6 @@
-package dao;
+package com.freelanceit.freelanceit.dao;
 
-import dto.Project;
+import com.freelanceit.freelanceit.dto.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

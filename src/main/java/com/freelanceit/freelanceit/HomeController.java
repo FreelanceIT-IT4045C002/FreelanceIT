@@ -66,6 +66,7 @@ public class HomeController {
         // Redirect or forward to a confirmation page or back to the task form
         return "Taskpage"; // Ensure this points to the task confirmation or main task page
     }
+
     @DeleteMapping("/delete/task")
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
         // Here, you would add logic to delete the task from your database or storage
