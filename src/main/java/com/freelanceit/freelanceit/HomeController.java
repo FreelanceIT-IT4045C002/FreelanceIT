@@ -68,9 +68,18 @@ public class HomeController {
     }
     @DeleteMapping("/delete/task")
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
-        // Here, you would add logic to delete the task from your database or storage
-        System.out.println("Deleting task with ID: " + id);
-
+        try {
+            if (id < 0) {
+                return ResponseEntity.badRequest().body("Invalid task ID. The ID must be non-negative.");
+            }
+            else {
+                // Here, you would add logic to delete the task from your database or storage
+                System.out.println("Deleting task with ID: " + id);
+            };
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Deletion Falied. See console for details.");
+        }
         // Simulate successful deletion response
         return ResponseEntity.ok("Task deleted successfully!");
     }
