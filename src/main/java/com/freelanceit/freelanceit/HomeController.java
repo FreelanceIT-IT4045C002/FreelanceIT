@@ -55,6 +55,19 @@ public class HomeController {
             @RequestParam("assigned") String assigned,
             Model model) {
 
+        if (title == null || title.isEmpty()) {
+            model.addAttribute("error", "Title is required.");
+            return "Taskpage";
+        }
+        if (description == null || description.isEmpty()) {
+            model.addAttribute("error", "Description is required.");
+            return "Taskpage";
+        }
+        if (assigned == null || assigned.isEmpty()) {
+            model.addAttribute("error", "Assigned person is required.");
+            return "Taskpage";
+        }
+
         // Here you would typically save the task data to a database or process it
         System.out.println("Task Title: " + title);
         System.out.println("Description: " + description);
