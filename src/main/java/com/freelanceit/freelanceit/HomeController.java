@@ -55,6 +55,11 @@ public class HomeController {
             @RequestParam("assigned") String assigned,
             Model model) {
 
+        
+        if (title == null || title.isEmpty() || description == null || description.isEmpty() || assigned == null || assigned.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("All fields are required to add a task.");
+        }
+
         // Here you would typically save the task data to a database or process it
         System.out.println("Task Title: " + title);
         System.out.println("Description: " + description);
@@ -70,6 +75,11 @@ public class HomeController {
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
         // Here, you would add logic to delete the task from your database or storage
         System.out.println("Deleting task with ID: " + id);
+
+         if (task.isPresent()) {
+            System.out.println("Deleting task with ID: " + id);
+            return ResponseEntity.ok("Task deleted successfully!");
+        } else {
 
         // Simulate successful deletion response
         return ResponseEntity.ok("Task deleted successfully!");
