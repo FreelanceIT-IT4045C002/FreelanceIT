@@ -25,8 +25,9 @@ public class ProjectDAO implements IProjectDAO {
     public List<Project> findAll() {
         List<Project> projects = new ArrayList<>();
         projectRepository.findAll().forEach(projects::add);
-        return projects;
+        return List.copyOf(projects);
     }
+    
 
     @Override
     public Project fetch(int id) {
