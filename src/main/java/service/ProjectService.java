@@ -34,6 +34,10 @@ public class ProjectService implements IProjectService {
 
     @Override
     public Project save(Project project) throws Exception {
+        if (project == null) {
+            throw new IllegalArgumentException("Project cannot be null");
+        }
         return projectDAO.save(project);
     }
+
 }
