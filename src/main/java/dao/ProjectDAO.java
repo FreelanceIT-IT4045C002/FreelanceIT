@@ -26,8 +26,10 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public Project fetch(int id) {
-        return projectRepository.findById(id).get();
-    }
+        return projectRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Project with ID " + id + " not found"));
+} 
+
 
     @Override
     public void delete(int id) {
