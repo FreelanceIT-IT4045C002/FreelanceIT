@@ -14,9 +14,13 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public Project save(Project project) throws Exception {
-        return projectRepository.save(project);
+        try {
+            return projectRepository.save(project);
+        } catch (Exception e) {
+            throw new Exception("Error saving project: " + project, e);
+        }
     }
-
+    
     @Override
     public List<Project> findAll() {
         List<Project> projects = new ArrayList<>();
