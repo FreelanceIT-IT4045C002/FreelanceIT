@@ -33,13 +33,13 @@ public class HomeController {
     @GetMapping("/add/task")
     public String addTask()
     {
-        return "Taskpage"; // Ensure that this matches the HTML filename, e.g., Taskpage.html
+        return "taskpage"; // Ensure that this matches the HTML filename, e.g., taskpage.html
     }
 
     @GetMapping("/add/todo")
     public String addTodo()
     {
-        return "AddtodoList";
+        return "addtodoList";
     }
 
     @GetMapping("/inprogress")
@@ -64,7 +64,7 @@ public class HomeController {
         model.addAttribute("message", "Task added successfully!");
 
         // Redirect or forward to a confirmation page or back to the task form
-        return "Taskpage"; // Ensure this points to the task confirmation or main task page
+        return "taskpage"; // Ensure this points to the task confirmation or main task page
     }
     @DeleteMapping("/delete/task")
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
