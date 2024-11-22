@@ -12,7 +12,9 @@ public class ProjectService implements IProjectService {
     @Autowired
     private IProjectDAO projectDAO;
 
-    public ProjectService() { }
+    public ProjectService() {
+    }
+
     public ProjectService(IProjectDAO projectDAO) {
         this.projectDAO = projectDAO;
     }

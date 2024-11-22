@@ -35,14 +35,12 @@ public class HomeController {
     }
 
     @GetMapping("/add/task")
-    public String addTask()
-    {
+    public String addTask() {
         return "taskpage"; // Ensure that this matches the HTML filename, e.g., taskpage.html
     }
 
     @GetMapping("/add/todo")
-    public String addTodo()
-    {
+    public String addTodo() {
         return "addtodoList";
     }
 
