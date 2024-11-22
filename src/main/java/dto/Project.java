@@ -13,7 +13,7 @@ public @Data class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ProjectId;
     private int UserId;
-    private String Name;
+    private String Username;
     private OffsetDateTime StartDate;
     private OffsetDateTime Deadline;
     private OffsetDateTime EndDate;
