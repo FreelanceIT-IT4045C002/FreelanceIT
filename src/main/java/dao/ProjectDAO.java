@@ -14,20 +14,28 @@ public class ProjectDAO implements IProjectDAO {
 
     @Override
     public Project save(Project project) throws Exception {
-        return projectRepository.save(project);
+        try {
+            return projectRepository.save(project);
+        }
+        catch (Exception e) {
+            throw new Exception("Error saving project: " + project, e);
+        }
     }
 
     @Override
     public List<Project> findAll() {
         List<Project> projects = new ArrayList<>();
         projectRepository.findAll().forEach(projects::add);
-        return projects;
+        return List.copyOf(projects);
     }
+
 
     @Override
     public Project fetch(int id) {
-        return projectRepository.findById(id).get();
+        return projectRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Project with ID " + id + " not found"));
     }
+
 
     @Override
     public void delete(int id) {
