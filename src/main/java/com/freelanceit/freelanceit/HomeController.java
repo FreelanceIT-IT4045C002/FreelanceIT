@@ -1,5 +1,9 @@
 package com.freelanceit.freelanceit;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,39 +16,36 @@ import org.springframework.ui.Model;
 @Controller
 public class HomeController {
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(HomeController.class);
+
+
     @GetMapping("/")
-    public String index()
-    {
+    public String index() {
         return "index";
     }
 
     @GetMapping("/login")
-    public String login()
-    {
+    public String login() {
         return "login";
     }
 
     @GetMapping("/add/project")
-    public String getProject()
-    {
+    public String getProject() {
         return "project";
     }
 
     @GetMapping("/add/task")
-    public String addTask()
-    {
+    public String addTask() {
         return "Taskpage"; // Ensure that this matches the HTML filename, e.g., Taskpage.html
     }
 
     @GetMapping("/add/todo")
-    public String addTodo()
-    {
+    public String addTodo() {
         return "AddtodoList";
     }
 
     @GetMapping("/inprogress")
-    public String inProgress()
-    {
+    public String inProgress() {
         return "inprogress";
     }
 
@@ -66,12 +67,18 @@ public class HomeController {
         // Redirect or forward to a confirmation page or back to the task form
         return "Taskpage"; // Ensure this points to the task confirmation or main task page
     }
+
     @DeleteMapping("/delete/task")
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
-        // Here, you would add logic to delete the task from your database or storage
-        System.out.println("Deleting task with ID: " + id);
-
-        // Simulate successful deletion response
-        return ResponseEntity.ok("Task deleted successfully!");
+        try {
+            // Simulate finding and deleting the task
+            logger.info("Deleting task with ID: {}");
+            // Logic to check if the task exists and delete it
+            return ResponseEntity.ok("Task deleted successfully!");
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error deleting task with ID: " + id, e);
+            return ResponseEntity.status(500).body("Failed to delete task");
+        }
     }
 }
+
