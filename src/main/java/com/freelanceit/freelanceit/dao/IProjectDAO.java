@@ -1,6 +1,6 @@
-package dao;
+package com.freelanceit.freelanceit.dao;
 
-import dto.Project;
+import com.freelanceit.freelanceit.dto.Project;
 
 import java.util.List;
 
