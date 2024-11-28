@@ -1,9 +1,9 @@
 package com.freelanceit.freelanceit;
 
-import dao.IProjectDAO;
-import dto.Project;
+import com.freelanceit.freelanceit.dao.IProjectDAO;
+import com.freelanceit.freelanceit.dto.Project;
 import org.mockito.MockitoAnnotations;
-import service.ProjectService;
+import com.freelanceit.freelanceit.service.ProjectService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

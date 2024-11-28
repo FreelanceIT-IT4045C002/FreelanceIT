@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 
 @Controller
 public class HomeController {
-
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @GetMapping("/")
