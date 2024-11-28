@@ -39,7 +39,7 @@ class ProjectServiceTests {
         // Then: Verify the project is saved and the correct project is returned
         assertNotNull(savedProject);
         assertEquals(1, savedProject);
-        assertEquals("Test Project", savedProject.getName());
+        assertEquals("Test Project", savedProject.getUsername());
 
         // Verify that the save method of the DAO was called once with the project
         verify(projectDAO, times(1)).save(project);

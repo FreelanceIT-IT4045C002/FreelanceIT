@@ -16,8 +16,7 @@ import org.springframework.ui.Model;
 @Controller
 public class HomeController {
 
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(HomeController.class);
-
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @GetMapping("/")
     public String index() {
@@ -77,7 +76,7 @@ public class HomeController {
             // Logic to check if the task exists and delete it
             return ResponseEntity.ok("Task deleted successfully!");
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error deleting task with ID: " + id, e);
+            logger.error("Error deleting task with ID: {}", id, e);
             return ResponseEntity.status(500).body("Failed to delete task");
         }
     }
