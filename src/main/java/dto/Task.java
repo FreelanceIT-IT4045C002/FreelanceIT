@@ -1,9 +1,14 @@
 package com.freelanceit.freelanceit.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-public @Data class Task {
+@Setter
+@Getter
+public class Task {
+    // Getters and setters
     private String title;
     private String description;
     private String assigned;
+
 }

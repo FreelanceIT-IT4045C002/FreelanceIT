@@ -1,7 +1,7 @@
-package com.freelanceit.freelanceit.service;
+package service;
 
-import com.freelanceit.freelanceit.dao.IProjectDAO;
-import com.freelanceit.freelanceit.dto.Project;
+import dao.IProjectDAO;
+import dto.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
