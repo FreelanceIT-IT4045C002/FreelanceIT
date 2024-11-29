@@ -69,30 +69,23 @@
     </nav>
 </header>
 <main class="container mt-4">
-    <form action="/submit-project" method="post" class="needs-validation" novalidate>
-        <div class="mb-3"><label for="projectName" class="form-label">Project title:</label> <input type="text"
-                                                                                                    id="projectName"
-                                                                                                    name="projectName"
-                                                                                                    class="form-control"
-                                                                                                    required>
+    <form action="/CreateProject" method="post" class="needs-validation" th:object="${project}" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Project title:</label>
+            <input type="text" id="title" name="title" th:field="*{title}" class="form-control" required>
             <div class="invalid-feedback"> Please provide a project title.</div>
         </div>
-        <div class="mb-3"><label for="projectDescription" class="form-label">Project Description:</label> <textarea
-                id="projectDescription" name="projectDescription" class="form-control" required></textarea>
-            <div class="invalid-feedback"> Please provide a project description.</div>
+        <div class="mb-3">
+            <label for="startDate" class="form-label">Project Start Date:</label>
+            <input type="datetime-local" id="startDate" name="startDate" th:field="*{startDate}" class="form-control">
         </div>
-        <div class="mb-3"><label for="projectImage" class="form-label">Project Image:</label> <input type="file"
-                                                                                                     id="projectImage"
-                                                                                                     name="projectImage"
-                                                                                                     class="form-control"
-                                                                                                     accept="image/*">
+        <div class="mb-3">
+            <label for="deadline" class="form-label">Project Deadline:</label>
+            <input type="datetime-local" id="deadline" name="deadline" th:field="*{deadline}" class="form-control">
         </div>
-        <div class="mb-3"><label for="projectAssignee" class="form-label">Assigned to:</label> <input type="text"
-                                                                                                      id="projectAssignee"
-                                                                                                      name="projectAssignee"
-                                                                                                      class="form-control"
-                                                                                                      required>
-            <div class="invalid-feedback"> Please provide a project Assignee.</div>
+        <div class="mb-3">
+            <label for="endDate" class="form-label">Project End Date:</label>
+            <input type="datetime-local" id="endDate" name="endDate" th:field="*{endDate}" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Add project</button>
     </form>

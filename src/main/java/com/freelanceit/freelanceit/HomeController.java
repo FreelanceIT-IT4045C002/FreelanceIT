@@ -46,7 +46,9 @@ public class HomeController {
     }
 
     @GetMapping("/add/project")
-    public String getProject() {
+    public String getProject(Model model) {
+        Project project = new Project();
+        model.addAttribute(project);
         return "project";
     }
 
