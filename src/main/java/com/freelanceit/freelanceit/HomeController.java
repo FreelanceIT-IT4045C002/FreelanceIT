@@ -20,20 +20,7 @@ import org.springframework.ui.Model;
 public class HomeController {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    @Autowired
-    IProjectService projectService;
 
-    @PostMapping("/CreateProject")
-    public String createProject(Project project) {
-        try {
-            projectService.save(project);
-        } catch (Exception e) {
-            //   throw new RuntimeException(e);
-            e.printStackTrace();
-            return "error";
-        }
-        return "index";
-    }
 
     @GetMapping("/")
     public String index() {
@@ -43,11 +30,6 @@ public class HomeController {
     @GetMapping("/login")
     public String login() {
         return "login";
-    }
-
-    @GetMapping("/add/project")
-    public String getProject() {
-        return "project";
     }
 
     @GetMapping("/add/task")

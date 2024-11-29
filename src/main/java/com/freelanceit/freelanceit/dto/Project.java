@@ -5,6 +5,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -13,8 +14,8 @@ public @Data class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ProjectId;
     private int UserId;
-    private String Username;
-    private OffsetDateTime StartDate;
-    private OffsetDateTime Deadline;
-    private OffsetDateTime EndDate;
+    private String Title;
+    private LocalDateTime StartDate;
+    private LocalDateTime Deadline;
+    private LocalDateTime EndDate;
 }
