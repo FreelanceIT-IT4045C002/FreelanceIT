@@ -25,7 +25,7 @@ public class TaskController {
     public String getTask(Model model) {
         Task task = new Task();
         model.addAttribute(task);
-        return "task";
+        return "taskpage";
     }
 
     @PostMapping("/CreateTask/{id}")
