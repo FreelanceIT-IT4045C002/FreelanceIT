@@ -42,7 +42,11 @@
                 <li>
                     <a href="/inprogress">In Progress</a>
                 </li>
-
+                <li>
+                    <form th:action="@{/api/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
         <div class="side-menu">
