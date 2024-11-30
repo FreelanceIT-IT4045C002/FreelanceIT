@@ -1,6 +1,7 @@
 package com.freelanceit.freelanceit.dto;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,10 +14,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @Column(unique = true)
     private String username;
+    @Setter
     private String password;
-    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -33,3 +35,4 @@ public class User implements UserDetails {
         return this.username;
     }
 }
+
