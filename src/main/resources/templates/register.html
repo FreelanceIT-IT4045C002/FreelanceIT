@@ -12,15 +12,15 @@
 </head>
 
 <body>
-<form class="needs-validation" action="/api/login" method="post" th:object="${login}">
+<form class="needs-validation" action="/api/register" method="post" th:object="${register}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6">
                 <div class="form-wrap">
                     <div class="form-card">
                         <div class="top">
-                            <h3>Login to Your Account</h3>
-                            <p>Enter your username & password to login</p>
+                            <h3>Create Your Account</h3>
+                            <p>Enter your username & password to register</p>
                             <p class="text-secondary" th:text="${message}" />
                         </div>
                         <div class="content">
@@ -32,10 +32,7 @@
                                 <label for="password">Password</label>
                                 <input type="password" id="password" th:field="*{password}" required />
                             </div>
-                            <button type="submit" class="submit">Login</button>
-                            <p>
-                                Don't have account? <a href="/register">Create an account</a>
-                            </p>
+                            <button type="submit" class="submit">Register</button>
                         </div>
                     </div>
                 </div>

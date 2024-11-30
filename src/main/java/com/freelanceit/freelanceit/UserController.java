@@ -15,10 +15,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/api")
@@ -31,21 +33,29 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Validated @RequestBody LoginDTO loginDTO) {
-        User registeredUser = userService.registerUser(loginDTO);
-        return ResponseEntity.ok(registeredUser);
+    public String registerUser(@RequestParam String username, @RequestParam String password, Model model) {
+        try {
+            LoginDTO loginDTO = new LoginDTO();
+            loginDTO.setUsername(username);
+            loginDTO.setPassword(password);
+            User registeredUser = userService.registerUser(loginDTO);
+            return "redirect:/login?registered";
+        } catch (Exception e) {
+            model.addAttribute("error", "Registration failed: " + e.getMessage());
+            return "redirect:/register?error";
+        }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
+    public String login(@RequestBody LoginDTO loginDTO) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getPassword())
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            return ResponseEntity.ok("Login successful");
+            return "redirect:/index";
         } catch (AuthenticationException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+            return "redirect:/login?error";
         }
     }
 
