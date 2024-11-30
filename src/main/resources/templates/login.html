@@ -12,12 +12,11 @@
 </head>
 
 <body>
-<form class="form-layout" onsubmit="return validateLogin()">
+<form class="needs-validation" action="/api/login" method="post" th:object="${login}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6">
                 <div class="form-wrap">
-                    <img th:src="@{/images/Preview.png}" alt="" class="logo" />
                     <div class="form-card">
                         <div class="top">
                             <h3>Login to Your Account</h3>
@@ -26,20 +25,16 @@
                         <div class="content">
                             <div class="input">
                                 <label for="username">Username</label>
-                                <input type="text" id="username" required />
+                                <input type="text" id="username" th:field="*{username}" required />
                             </div>
                             <div class="input">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" required />
-                            </div>
-                            <div class="remember">
-                                <input type="checkbox" />
-                                <label for="">Remember me</label>
+                                <input type="password" id="password" th:field="*{password}" required />
                             </div>
                             <button type="submit" class="submit">Login</button>
-                            <p>
-                                Don't have account? <a th:href="@{/signup.html}">Create an account</a>
-                            </p>
+<!--                            <p>-->
+<!--                                Don't have account? <a th:href="@{/signup.html}">Create an account</a>-->
+<!--                            </p>-->
                         </div>
                     </div>
                 </div>
@@ -51,25 +46,6 @@
 <!-- JavaScript files -->
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/custom.js}"></script>
-
-<!-- JavaScript for login validation -->
-<script type="text/javascript">
-    function validateLogin() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Check if dummy credentials are entered
-        if (username  && password) {
-            // Redirect to index.html if correct
-            window.location.href = '/';
-            return false; // Prevent actual form submission
-        } else {
-            alert('Invalid username or password. Please try again.');
-            return false; // Prevent actual form submission
-        }
-    }
-</script>
-
 </body>
 
 </html>

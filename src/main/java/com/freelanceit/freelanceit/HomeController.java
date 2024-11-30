@@ -3,7 +3,9 @@ package com.freelanceit.freelanceit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.freelanceit.freelanceit.dto.LoginDTO;
 import com.freelanceit.freelanceit.dto.Project;
+import com.freelanceit.freelanceit.dto.User;
 import com.freelanceit.freelanceit.service.IProjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,9 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        LoginDTO loginDTO = new LoginDTO();
+        model.addAttribute("login", loginDTO);
         return "login";
     }
 
