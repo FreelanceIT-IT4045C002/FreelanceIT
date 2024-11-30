@@ -1,8 +1,6 @@
 package com.freelanceit.freelanceit.dto;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,9 +11,15 @@ public @Data class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ProjectId;
-    private int UserId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(nullable = false)
     private String Title;
     private LocalDateTime StartDate;
     private LocalDateTime Deadline;
     private LocalDateTime EndDate;
 }
+

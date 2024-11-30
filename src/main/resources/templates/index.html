@@ -42,7 +42,11 @@
                 <li>
                     <a href="/inprogress">In Progress</a>
                 </li>
-
+                <li>
+                    <form th:action="@{/api/logout}" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
         <div class="side-menu">
@@ -59,7 +63,6 @@
                 </li>
                 <li>
                     <a href="javascript:">
-                        <img th:src="@{/images/profile-img.jpg}" alt="">
                         <span>K.Anderson <i class="fa fa-chevron-down"></i></span>
                     </a>
                 </li>

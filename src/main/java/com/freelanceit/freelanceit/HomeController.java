@@ -3,7 +3,9 @@ package com.freelanceit.freelanceit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.freelanceit.freelanceit.dto.LoginDTO;
 import com.freelanceit.freelanceit.dto.Project;
+import com.freelanceit.freelanceit.dto.User;
 import com.freelanceit.freelanceit.service.IProjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +30,26 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(String registered, String error, Model model) {
+        LoginDTO loginDTO = new LoginDTO();
+        model.addAttribute("login", loginDTO);
+        if (registered != null) {
+            model.addAttribute("message", "Registration successful. Please log in.");
+        }
+        if (error != null) {
+            model.addAttribute("message", "There was a problem logging in, try again.");
+        }
         return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(String error, Model model) {
+        LoginDTO registerDTO = new LoginDTO();
+        model.addAttribute("register", registerDTO);
+        if (error != null) {
+            model.addAttribute("message", "There was a problem creating a new user.");
+        }
+        return "register";
     }
 
     @GetMapping("/add/task")
