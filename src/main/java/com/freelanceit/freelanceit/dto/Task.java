@@ -24,7 +24,7 @@ public @Data class Task {
     private int TaskId;
 
     @ManyToOne
-    @JoinColumn(name = "project_id", nullable = false)
+    @JoinColumn(name = "project_id")
     private Project project;
 
     @Column(nullable = false)

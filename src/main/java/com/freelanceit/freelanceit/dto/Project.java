@@ -1,16 +1,14 @@
 package com.freelanceit.freelanceit.dto;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 
 @Entity
 public @Data class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ProjectId;
+    private int projectId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
