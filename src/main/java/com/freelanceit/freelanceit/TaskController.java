@@ -21,22 +21,22 @@ public class TaskController {
     @Autowired
     IProjectService projectService;
 
-    @GetMapping("/add/task")
-    public String getTask(Model model) {
+    @GetMapping("/project/{projectId}/tasks/add")
+    public String getTask(Model model, @PathVariable int projectId) {
         Task task = new Task();
         model.addAttribute(task);
-        return "taskpage";
+        model.addAttribute(projectId);
+        return "addtodoList";
     }
 
-    @PostMapping("/CreateTask/{id}")
-    public String createTask(Task task, @PathVariable("id") int projectId) {
+    @PostMapping("/CreateTask/{projectId}")
+    public String createTask(Task task, @PathVariable int projectId) {
         try {
-            Project project = projectService.fetchById(projectId);
-            task.setProject(project);
+            task.setProject(projectService.fetchById(projectId));
             taskService.save(task);
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/add/task?error";
+            return "redirect:/project/" + projectId + "/tasks/add?error";
         }
         return "index";
     }
