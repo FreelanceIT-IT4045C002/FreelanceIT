@@ -1,0 +1,22 @@
+<nav>
+    <a href="/" class="logo">
+        <div class="d-flex align-items-center gap-2">
+            <img th:src="@{/images/Preview.png}" alt="FreelanceIT Logo" class="rounded-circle shadow-sm ">
+            <h3 class="m-0 mx-1">FreelanceIT</h3>
+        </div>
+    </a>
+
+    <div class="side-menu">
+        <ul>
+            <li>
+                <form th:action="@{/api/logout}" method="post">
+                    <button type="submit" class="btn btn-sm">Logout</button>
+                </form>
+            </li>
+            <li>
+                <img th:src="@{/images/profile-img.jpg}" alt="Profile Picture" class="mx-1">
+                <span th:text="${userData.username}">K.Anderson</span>
+            </li>
+        </ul>
+    </div>
+</nav>

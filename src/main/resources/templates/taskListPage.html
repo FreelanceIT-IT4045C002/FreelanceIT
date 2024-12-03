@@ -46,56 +46,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<header>
-    <nav>
-        <a href="javascript:" class="logo">
-            <img th:src="@{/images/Preview.png}" alt="">
-        </a>
-
-        <div class="menuWrap">
-            <ul class="menu">
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/add/project">Project</a>
-                </li>
-                <li>
-                    <a href="/add/task"> Task</a>
-                </li>
-                <li>
-                    <a href="/inprogress">In-Progress</a>
-                </li>
-
-            </ul>
-        </div>
-        <div class="side-menu">
-            <ul>
-                <li>
-                    <a href="javascript:">
-                        <i class="fa fa-bell"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:">
-                        <i class="fa fa-comment"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:">
-                        <img th:src="@{/images/profile-img.jpg}" alt="">
-                        <span>K.Anderson <i class="fa fa-chevron-down"></i></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="menu-Bar">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-</header>
+<header th:insert="fragments/navbar.html"></header>
 
 
 <main class="main-content container">

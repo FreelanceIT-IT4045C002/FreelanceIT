@@ -16,14 +16,17 @@ public class ProjectController {
     @Autowired
     IProjectService projectService;
 
-    @GetMapping("/add/project")
-    public String getProject(Model model) {
+    @GetMapping("/project/add")
+    public String getProject(Model model, String error) {
         Project project = new Project();
         model.addAttribute(project);
-        return "project";
+        if (error != null) {
+            model.addAttribute("message", "There was a problem adding a project, try again.");
+        }
+        return "addProject";
     }
 
-    @PostMapping("/CreateProject")
+    @PostMapping("/api/project/add")
     public String createProject(Project project) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -33,8 +36,8 @@ public class ProjectController {
         } catch (Exception e) {
             //   throw new RuntimeException(e);
             e.printStackTrace();
-            return "redirect:/add/project?error";
+            return "redirect:/project/add?error";
         }
-        return "index";
+        return "redirect:/";
     }
 }
