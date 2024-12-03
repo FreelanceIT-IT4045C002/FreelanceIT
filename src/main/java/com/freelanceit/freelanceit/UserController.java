@@ -22,16 +22,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Controller class for handling user-related operations such as registration, login, and logout.
+ * This controller is mapped to the "/api" endpoint.
+ */
 @Controller
 @RequestMapping("/api")
 public class UserController {
+
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
+
+    /**
+     * Constructor for UserController.
+     *
+     * @param userService the service for user-related operations
+     * @param authenticationManager the authentication manager for handling user authentication
+     */
     public UserController(UserService userService, AuthenticationManager authenticationManager) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
     }
 
+    /**
+     * Handles user registration requests.
+     *
+     * @param username the username of the new user
+     * @param password the password of the new user
+     * @param model the Spring MVC Model object
+     * @return a redirect string to the login page on success or back to the registration page on error
+     */
     @PostMapping("/register")
     public String registerUser(@RequestParam String username, @RequestParam String password, Model model) {
         try {
@@ -46,6 +66,12 @@ public class UserController {
         }
     }
 
+    /**
+     * Handles user login requests.
+     *
+     * @param loginDTO the Data Transfer Object containing login credentials
+     * @return a redirect string to the index page on successful login or back to the login page on error
+     */
     @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO) {
         try {
@@ -59,6 +85,13 @@ public class UserController {
         }
     }
 
+    /**
+     * Handles user logout requests.
+     *
+     * @param request the HttpServletRequest object
+     * @param response the HttpServletResponse object
+     * @return a ResponseEntity with a success message
+     */
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
