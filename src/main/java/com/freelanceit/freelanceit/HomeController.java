@@ -45,11 +45,6 @@ public class HomeController {
         return "register";
     }
 
-//    @GetMapping("/add/task")
-//    public String addTask() {
-//        return "taskpage"; // Ensure that this matches the HTML filename, e.g., taskpage.html
-//    }
-
     @GetMapping("/add/todo")
     public String addTodo() {
         return "addTask";
@@ -58,26 +53,6 @@ public class HomeController {
     @GetMapping("/inprogress")
     public String inProgress() {
         return "inprogress";
-    }
-
-    @PostMapping("/add/todo")
-    public String submitTask(
-            @RequestParam("title") String title,
-            @RequestParam("description") String description,
-            @RequestParam("assigned") String assigned,
-            Model model) {
-
-        // Here you would typically save the task data to a database or process it
-        System.out.println("Task Title: " + title);
-        System.out.println("Description: " + description);
-        System.out.println("Assigned to: " + assigned);
-
-        // Add attributes to the model to pass back to the view if needed
-        model.addAttribute("message", "Task added successfully!");
-
-        // Redirect or forward to a confirmation page or back to the task form
-        return "taskpage";
-        // Ensure this points to the task confirmation or main task page
     }
 
     @DeleteMapping("/delete/task")

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class TaskController {
     @Autowired
@@ -17,6 +19,13 @@ public class TaskController {
 
     @Autowired
     IProjectService projectService;
+
+    @GetMapping("/project/{projectId}/tasks")
+    public String getTask(Model model, @PathVariable int projectId) {
+        List<Task> taskList = taskService.fetchAllByProjectId(projectId);
+        model.addAttribute("tasks", taskList);
+        return "taskListPage";
+    }
 
     @GetMapping("/project/{projectId}/tasks/add")
     public String getTask(Model model, String error,@PathVariable int projectId) {
