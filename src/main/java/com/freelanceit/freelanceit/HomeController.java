@@ -9,13 +9,13 @@ import com.freelanceit.freelanceit.dto.User;
 import com.freelanceit.freelanceit.service.IProjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import dto.Project;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import service.IProjectService;
+import service.ProjectService;
 
 
 @Controller
@@ -87,6 +87,11 @@ public class HomeController {
         // Ensure this points to the task confirmation or main task page
     }
 
+//
+//    @PostMapping(value="/add/project", consumes ="application/json", produces ="application/json" )
+//    public Project createProject(@RequestBody Project project){
+//        return project;
+//    }
     @DeleteMapping("/delete/task")
     public ResponseEntity<String> deleteTask(@RequestParam("id") int id) {
         try {
