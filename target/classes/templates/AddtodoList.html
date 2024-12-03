@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreelanceIT</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<!-- Top Nav -->
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<main class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">Add Task</h2>
+        <form action="/add/task" method="post">
+            <div class="form-group">
+                <label for="title">Add Title:</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="screenshot">Add Screenshot <span class="plus">+</span>:</label>
+                <input type="file" id="screenshot" name="screenshot" class="form-control-file">
+            </div>
+            <div class="form-group">
+                <label for="assigned">Assigned to:</label>
+                <input type="text" id="assigned" name="assigned" class="form-control" required>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Submit Task</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+ <script>
+    // Function to handle form submission
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get the input values from the form
+        const taskTitle = document.getElementById('title').value;
+        const taskDescription = document.getElementById('description').value;
+        const taskAssigned = document.getElementById('assigned').value;
+        // Note: File input handling for screenshots would need to be implemented separately
+
+        // Store the task in localStorage
+        if (taskTitle && taskDescription && taskAssigned) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+            // Create a new task object
+            const newTask = {
+                title: taskTitle,
+                description: taskDescription,
+                assigned: taskAssigned,
+                // screenshot: document.getElementById('screenshot').files[0] // Handling file upload requires additional steps
+            };
+
+            // Add the new task to the array
+            tasks.push(newTask);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            // Display a popup message
+            alert("Task added successfully!");
+
+            // Redirect to Taskpage.html
+            window.location.href = "/add/task";
+        } else {
+            alert("Please fill in all required fields.");
+        }
+    }
+</script>
+
+<!-- jQuery and Bootstrap JS -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<!-- Datatables and custom JS -->
+<script th:src="@{/js/datatables.js}"></script>
+<script th:src="@{https://cdn.datatables.net/2.1.8/js/dataTables.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+
+</body>
+
+</html>
