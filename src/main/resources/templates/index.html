@@ -38,6 +38,26 @@
             margin-top: 20px;
             color: #343a40;
         }
+
+        .home-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #add8e6; /* Light blue */
+            color: white; /* White font */
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn:hover {
+            background-color: #87ceeb; /* Slightly darker light blue */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
     </style>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css}">
@@ -48,7 +68,14 @@
 </head>
 <body>
 <header th:insert="fragments/navbar.html"></header>
+
 <div class="container mt-5">
+    <!-- Home Button -->
+    <div class="text-right">
+        <a href="http://localhost:8080/project/add" class="btn btn-primary home-btn">ADD PROJECT</a>
+    </div>
+
+    <!-- Page Content -->
     <h2 class="mb-4">Projects</h2>
 
     <!-- First Project Row -->
