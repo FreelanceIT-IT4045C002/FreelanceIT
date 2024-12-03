@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Project</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css}">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" th:href="@{/css/layout.css}">
@@ -39,9 +39,35 @@
                     <a href="/inprogress">In-Progress</a>
                 </li>
 
-<!-- Top Nav -->
-<div th:replace="fragments/topnav :: navbar"></div>
-
+            </ul>
+        </div>
+        <div class="side-menu">
+            <ul>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-bell"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <img th:src="@{/images/profile-img.jpg}" alt="">
+                        <span>K.Anderson <i class="fa fa-chevron-down"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-Bar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
 <main class="container mt-4">
     <h1>Add Project</h1>
     <form action="/CreateProject" method="post" class="needs-validation" th:object="${project}">
