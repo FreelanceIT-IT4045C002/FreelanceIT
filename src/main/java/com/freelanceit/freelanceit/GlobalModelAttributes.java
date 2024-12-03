@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @ControllerAdvice
 public class GlobalModelAttributes {
     @ModelAttribute("userData")
-    public User getUserData(){
+    public User getUserData() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)){
+        if (authentication != null && authentication.isAuthenticated() &&
+            !(authentication instanceof AnonymousAuthenticationToken)) {
             return (User) authentication.getPrincipal();
         }
         return new User();
