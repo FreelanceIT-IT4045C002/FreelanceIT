@@ -1,16 +1,26 @@
 package com.freelanceit.freelanceit;
 
 import com.freelanceit.freelanceit.dto.LoginDTO;
+import com.freelanceit.freelanceit.dto.Project;
+import com.freelanceit.freelanceit.service.IProjectService;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
+import java.util.Collection;
+
 
 @Controller
 public class HomeController {
+    @Autowired
+    IProjectService projectService;
+
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        Collection<Project> projectList = projectService.fetchAll();
+        model.addAttribute("projectList", projectList);
         return "index";
     }
 
