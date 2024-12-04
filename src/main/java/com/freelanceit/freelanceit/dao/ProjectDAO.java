@@ -29,6 +29,11 @@ public class ProjectDAO implements IProjectDAO {
         return List.copyOf(projects);
     }
 
+    @Override
+    public List<Project> findByUser_Id(int userId) {
+        return projectRepository.findByUser_Id(userId);
+    }
+
 
     @Override
     public Project fetch(int id) {

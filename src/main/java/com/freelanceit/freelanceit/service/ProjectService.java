@@ -30,6 +30,11 @@ public class ProjectService implements IProjectService {
     }
 
     @Override
+    public List<Project> fetchByUserId(int userId) {
+        return projectDAO.findByUser_Id(userId);
+    }
+
+    @Override
     public void delete(int id) throws Exception {
         projectDAO.delete(id);
     }

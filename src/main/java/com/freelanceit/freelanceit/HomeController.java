@@ -2,9 +2,12 @@ package com.freelanceit.freelanceit;
 
 import com.freelanceit.freelanceit.dto.LoginDTO;
 import com.freelanceit.freelanceit.dto.Project;
+import com.freelanceit.freelanceit.dto.User;
 import com.freelanceit.freelanceit.service.IProjectService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
@@ -19,7 +22,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        Collection<Project> projectList = projectService.fetchAll();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        Collection<Project> projectList = projectService.fetchByUserId(user.getId());
         model.addAttribute("projectList", projectList);
         return "index";
     }
