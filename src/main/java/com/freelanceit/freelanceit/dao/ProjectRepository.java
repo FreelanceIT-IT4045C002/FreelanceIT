@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  * Repository interface for managing Project entities.
- *
  * This interface extends CrudRepository to provide CRUD operations
  * for Project entities with Integer as the ID type.
  */
