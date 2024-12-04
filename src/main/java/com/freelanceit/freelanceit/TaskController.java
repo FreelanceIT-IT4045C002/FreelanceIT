@@ -6,6 +6,7 @@ import com.freelanceit.freelanceit.service.ITaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,18 @@ public class TaskController {
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/project/%d/tasks/add?error".formatted(projectId);
+        }
+        return "redirect:/project/%d/tasks".formatted(projectId);
+    }
+
+    @PostMapping("/api/project/{projectId}/tasks/{taskId}/delete")
+    public String deleteTask(Model model, @PathVariable int projectId, @PathVariable int taskId) {
+        try{
+            taskService.delete(taskId);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            model.addAttribute("message", "There was a problem while deleting a task, please try again");
         }
         return "redirect:/project/%d/tasks".formatted(projectId);
     }
