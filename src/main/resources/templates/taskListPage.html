@@ -66,30 +66,44 @@
                 </a>
             </div>
         </div>
+        <div class="row" id="taskCards">
+            <div th:each="task : ${tasks}" class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${task.title}">Task Title</h5>
+                        <p class="card-text" th:text="${task.description}">Task Description</p>
+                        <p class="card-text">
+                            <small class="text-muted">Assigned to: <span th:text="${task.assigned}">Assignee</span></small>
+                        </p>
+                        <a th:href="@{'/delete/task?id=' + ${task.taskId}}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </main>
 
-<script>
+//<script>
     // Function to load tasks from localStorage and display them
-    function loadTasks() {
-        const taskCardsContainer = document.getElementById('taskCards');
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Replace with data from your backend if needed.
+   // function loadTasks() {
+     //   const taskCardsContainer = document.getElementById('taskCards');
+       // const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Replace with data from your backend if needed.
 
-        taskCardsContainer.innerHTML = ''; // Clear existing tasks
+        //taskCardsContainer.innerHTML = ''; // Clear existing tasks
 
-        tasks.forEach((task) => {
-            const taskCard = document.createElement('div');
-            taskCard.className = 'task-card';
-            taskCard.innerHTML = `
-      <p>${task.title}</p>
-      <span>${task.description}</span>
-      <span>Assigned to: ${task.assigned}</span>
-      <button onclick="deleteTask(${task.id})">Delete</button> <!-- Call deleteTask here -->
-    `;
-            taskCardsContainer.appendChild(taskCard);
-        });
-    }
+        //tasks.forEach((task) => {
+          //  const taskCard = document.createElement('div');
+            //taskCard.className = 'task-card';
+            //taskCard.innerHTML = `
+     // <p>${task.title}</p>
+      //<span>${task.description}</span>
+      //<span>Assigned to: ${task.assigned}</span>
+      //<button onclick="deleteTask(${task.id})">Delete</button> <!-- Call deleteTask here -->
+    //`;
+      //      taskCardsContainer.appendChild(taskCard);
+        //});
+    //}
 
     // Function to delete a task
     function deleteTask(taskId) {
