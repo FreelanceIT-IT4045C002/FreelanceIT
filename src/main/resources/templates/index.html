@@ -25,10 +25,6 @@
             cursor: pointer;
         }
 
-        .badge {
-            background-color: #ffc107;
-        }
-
         h2 {
             color: #343a40;
             text-align: left;
@@ -59,13 +55,13 @@
 
         .btn-primary {
             background-color: #ffc107 !important;
-            color: white !important;
+            color: black !important;
             border: none;
         }
 
         .btn-primary:hover {
             background-color: #ffc107;
-            color: white;
+            color: black;
         }
 
 
@@ -87,35 +83,35 @@
     </div>
 
     <!-- Page Content -->
-    <h2 class="mb-4">Projects</h2>
+    <h2 class="mb-4">Current Projects</h2>
 
-    <h4 class="project-title">In Progress Projects</h4>
-    <div class="d-flex flex-row flex-wrap justify-content-start" id="taskContainer1">
+    <div class="d-flex flex-wrap" id="taskContainer1">
         <!-- Thymeleaf Loop to Generate Projects -->
-        <div class="card" th:each="project : ${projectList}" style="min-width: 200px;">
-            <div class="card-body">
-                <button class="btn btn-primary position-absolute" style="top: 10px; right: 10px;"
-                        th:onclick="'window.location.href=\'/project/' + ${project.projectId} + '/tasks\''">
-                    View Tasks
-                </button>
-                <h5 class="card-title text-left" th:text="${project.title}">Project Title</h5>
-                <p><strong>Project ID:</strong>
-                    <span th:text="${project.projectId}">Project ID</span>
-                </p>
-                <p><strong>Start Date:</strong>
-                    <span th:text="${project.startDate}">Start Date</span>
-                </p>
-                <p><strong>End Date:</strong>
-                    <span th:text="${project.endDate}">End Date</span>
-                </p>
-                <p><strong>Deadline:</strong>
-                    <span th:text="${project.deadline}">Deadline</span>
-                </p>
+        <div class="col-md-4 d-flex mb-4" th:each="project : ${projectList}">
+            <div class="card w-100">
+                <div class="card-body">
+                    <button class="btn btn-primary position-absolute" style="top: 10px; right: 10px;"
+                            th:onclick="'window.location.href=\'/project/' + ${project.projectId} + '/tasks\''">
+                        VIEW TASKS
+                    </button>
+                    <h5 class="card-title text-left" th:text="${project.title}">Project Title</h5>
+                    <p><strong>Project ID:</strong>
+                        <span th:text="${project.projectId}">Project ID</span>
+                    </p>
+                    <p><strong>Start Date:</strong>
+                        <span th:text="${project.startDate}">Start Date</span>
+                    </p>
+                    <p><strong>End Date:</strong>
+                        <span th:text="${project.endDate}">End Date</span>
+                    </p>
+                    <p><strong>Deadline:</strong>
+                        <span th:text="${project.deadline}">Deadline</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
