@@ -23,31 +23,31 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    @Cacheable(value="task",key="#id")
+    @Cacheable(value = "task", key = "'task_' + #id")
     public Task fetchById(int id) {
         return taskDAO.fetch(id);
     }
 
     @Override
-    @Cacheable(value ="task")
+    @Cacheable(value = "task", key = "'all_tasks'")
     public List<Task> fetchAll() {
         return taskDAO.findAll();
     }
 
     @Override
-    @Cacheable(value = "task",key="#projectId")
+    @Cacheable(value = "task", key = "'project_' + #projectId")
     public List<Task> fetchAllByProjectId(int projectId) {
         return taskDAO.findAllByProjectId(projectId);
     }
 
     @Override
-    @CacheEvict(value="task")
+    @CacheEvict(value = "task", allEntries = true)
     public void delete(int id) throws Exception {
         taskDAO.delete(id);
     }
 
     @Override
-    @CacheEvict(value="task", allEntries=true)// Clear all tasks cache after saving
+    @CacheEvict(value = "task", allEntries = true)
     public Task save(Task task) throws Exception {
         if (task == null) {
             throw new IllegalArgumentException("Task cannot be null");
