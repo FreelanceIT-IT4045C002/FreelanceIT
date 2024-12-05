@@ -61,7 +61,7 @@
 
             <!-- Add Task Button -->
             <div class="add-task-card card text-center mt-3">
-                <a href="http://localhost:8080/project/1/tasks/add" class="text-decoration-none add-task-link">
+                <a th:href="@{http://localhost:8080/project/{projectId}/tasks/add(projectId=${projectId})}" class="text-decoration-none add-task-link">
                     <p class="display-4 text-primary add-task-plus">+</p>
                     <span class="add-task-text">Add New Task</span>
                 </a>
